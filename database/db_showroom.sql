@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2022 a las 22:19:01
+-- Tiempo de generación: 16-11-2022 a las 01:17:38
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -41,7 +41,13 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `dni`, `email`) VALUES
 (21, 'Florencia', 'Arispe', 41102903, 'florenciaarispe98@gmail.com'),
-(22, 'Florencia', 'Petruzella', 38824535, 'florenciaarispe98@gmail.com');
+(22, 'Florencia', 'Petruzella', 38824535, 'florenciapetruzzella@gmail.com'),
+(23, 'Matias', 'Oberti', 34343434, 'matioberti@gmail.com'),
+(24, 'Delfina', 'Ferreyra', 45343434, 'delfinaferreyra@gmail.com'),
+(25, 'Francisco', 'Arispe', 23243434, 'franciscoarisspe@gmail.com'),
+(26, 'Delfina', 'Zabaleta', 12343434, 'delfinazabaleta@gmail.com'),
+(27, 'Luisa', 'Rodriguez', 78343434, 'luisarodriguez@gmail.com'),
+(28, 'Sofia', 'Lobos', 12343434, 'sofilobos@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -57,16 +63,6 @@ CREATE TABLE `producto` (
   `fecha` date NOT NULL,
   `deuda` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`id_producto`, `cliente`, `producto`, `precio`, `fecha`, `deuda`) VALUES
-(13, 21, 'Remera', 5000, '2022-10-05', 2000),
-(14, 21, 'Pantalon', 7000, '2022-10-04', 1000),
-(15, 22, 'Top', 10000, '0000-00-00', 10000),
-(16, 22, 'Swetter', 7000, '0000-00-00', 4000);
 
 -- --------------------------------------------------------
 
@@ -112,7 +108,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
