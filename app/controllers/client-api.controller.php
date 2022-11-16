@@ -105,9 +105,9 @@ class ClientApiController {
     public function updateClient($params = null){
         $id = $params[':ID'];
         $data= $this->getData();
-
-        if ($id) {
-            $this->model->update($id, $data->nombre, $data->apellido,  $data->dni,  $data->email );
+        $clientId = $this->model->get($id);
+        if ($clientId) {
+            $this->model->update($id, $data->nombre, $data->apellido,  $data->dni,  $data->email);
             $this->view->response("El cliente fue modificado con éxito", 200);
         } else 
             $this->view->response("El cliente con el id=$id no existe", 404);
