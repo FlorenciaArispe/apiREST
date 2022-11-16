@@ -1,5 +1,5 @@
 ## API REST para un showroom de indumentaria
-- Para su funcionamiento importar la BASE DE DATOS: database/db_showroom.php
+- Para su funcionamiento importar la BASE DE DATOS: database/db_showroom.sql
 - Para usarla en postman http://localhost/web2/tpe2API/api/cliente
 - Ejemplos de uso:
     - [GET] .../api/cliente (accede a un listado de todos los clientes)

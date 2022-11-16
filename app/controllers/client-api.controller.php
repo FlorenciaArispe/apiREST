@@ -5,7 +5,6 @@ require_once './app/views/api.view.php';
 class ClientApiController {
     private $model;
     private $view;
-
     private $data;
 
     public function __construct() {
@@ -32,11 +31,13 @@ class ClientApiController {
         }
 
         //ORDERNAR       
-        if ((isset($_GET['sort']) && isset($_GET['order']) && 
-        (isset($_GET['order']) =='asc' || isset($_GET['order']) =='desc') && 
-        (in_array(isset($_GET['sort']), $column))) ) {
+        if (isset($_GET['sort']) && isset($_GET['order'])) {
             $sort= $_GET['sort'];
             $order= $_GET['order'];
+            
+            if(! (in_array($sort, $column)) || ($order!='asc') && ($order !='desc'))  {
+                return $this->view->response("El campo o el tipo de orden son invalidos" , 400);
+            }
         }
         else {
             $sort= null;
@@ -44,10 +45,13 @@ class ClientApiController {
         }
 
          //PAGINADO
-         if (isset($_GET['page']) && (isset($_GET['limit']))){            
+         if (isset($_GET['page']) && (isset($_GET['limit']))){        
             $page= intval($_GET['page']); //INTVAL LO CONVIERTE A ENTERO
             $limit= intval($_GET['limit']);            
-            $offset= ($limit * $page) - $limit;            
+            $offset= ($limit * $page) - $limit; 
+            if (($page<=0) || ($limit<=0) || (!is_numeric($page)) || (!is_numeric($limit))){
+                return $this->view->response("La pagina y el limite tienen que ser un numero que sea mayor a cero" , 400);
+            }           
         }
         else {
             $offset= null;
@@ -56,7 +60,7 @@ class ClientApiController {
 
         $result= $this->model->getAll($filterName, $offset, $limit, $order, $sort);
 
-        if($result)
+        if(count($result)>0)
             return $this->view->response($result, 200);
         else
             $this->view->response("No existen resultados", 404);
